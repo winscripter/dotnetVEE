@@ -7,6 +7,14 @@ dotnetVEE runs on .NET 6 and .NET 8 *only*.
 # Documentation
 Documentation can be found in the `doc` folder in the root of the GitHub repository.
 
+# Progressive Notification
+A great feature of `dotnetVEE` is Progressive Notification, which is a way you pass `ObservableCollection`
+to a utility, and it will add values representing the percentage (how much data is processed) of the progress
+until it hits 100%. This can help you build, for example, progress bars when using dotnetVEE in WPF, which is
+essential when it comes to creating video editors.
+
+Documentation for Progressive Notification can be found [here](https://github.com/winscripter/dotnetVEE/blob/main/doc/6.%20Progressive%20Notification.md).
+
 # Examples
 Obtaining information about a video:
 ```cs
