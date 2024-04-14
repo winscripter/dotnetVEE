@@ -6,3 +6,139 @@ dotnetVEE runs on .NET 6 and .NET 8 *only*.
 
 # Documentation
 Documentation can be found in the `doc` folder in the root of the GitHub repository.
+
+# Examples
+Obtaining information about a video:
+```cs
+using dotnetVEE;
+
+Video video = Video.Load("adorable_cats.mp4");
+Console.WriteLine($"FPS: {video.RoundedFPS}"); // 60
+Console.WriteLine($"Total Frames: {video.FrameCount}"); // 3917
+Console.WriteLine($"Resolution: {video.Resolution.X}x{video.Resolution.Y}"); // 1920x1080
+```
+
+Changing audio in a video between 2 timestamps (30%, default is 100%):
+```cs
+using dotnetVEE;
+using dotnetVEE.Abstractions;
+using dotnetVEE.Computation.Audio;
+
+Video vid = Video.Create("seagulls.mp4");
+
+AudioManager.AlterVolume(
+    vid,
+    new StartEndTimestamp(new TimeSpan(0, 0, 0, 1), new TimeSpan(0, 0, 0, 6)),
+    new Volume(30F),
+    "seagulls-silentpart.mp4");
+```
+
+Extracting audio from a video:
+```cs
+using dotnetVEE;
+using dotnetVEE.Computation.Audio;
+
+Video vid = Video.Create("seagulls.mp4");
+
+AudioKind? kind = AudioManager.AutomatedExtractAudio(vid, "audio.mp3");
+if (kind is null)
+{
+    Console.WriteLine("The audio format of the video is unsupported.");
+}
+else
+{
+    Console.WriteLine($"The audio type is {kind?.ToString()}");
+}
+```
+
+Glitch effect:
+```cs
+using dotnetVEE;
+using dotnetVEE.Abstractions;
+using dotnetVEE.Abstractions.FileGeneration;
+using dotnetVEE.Computation.Utils;
+using System.Collections.ObjectModel;
+
+Video video = Video.Create("seagulls.mp4");
+
+var progress = new ObservableCollection<float>();
+progress.CollectionChanged += (s, e) =>
+{
+    int lastObj = (int)progress.Last();
+    string pipes = new string('|', lastObj);
+
+    if (lastObj > 100)
+    {
+        return;
+    }
+
+    string fmt = $"[{pipes.PadRight(100, ' ')}]";
+    Console.WriteLine(fmt);
+};
+
+var config = new GlitchConfiguration(
+    new StartEndTimestamp(new TimeSpan(0, 0, 0, 1, 500), new TimeSpan(0, 0, 0, 3)),
+    0.05F,
+    -20,
+    20);
+
+var eff = new GlitchEffect(config, DeleteGeneratedFiles.None);
+eff.Run(video, ref progress);
+```
+
+Tweaking video speed by 3.5 times between two timestamps:
+```cs
+using dotnetVEE.Computation.Utils;
+using System.Collections.ObjectModel;
+
+Video video = Video.Create("seagulls.mp4");
+
+var none = new ObservableCollection<float>();
+
+Speed speed = new Speed(350F, new StartEndTimestamp(new TimeSpan(0, 0, 0, 1, 500), new TimeSpan(0, 0, 0, 7, 500)));
+speed.Run(video, ref none);
+```
+
+Adding text to video:
+```cs
+using dotnetVEE;
+using dotnetVEE.Abstractions;
+using dotnetVEE.Computation.Options;
+using dotnetVEE.Computation.Utils;
+using SixLabors.Fonts;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+
+Video video = Video.Create("seagulls.mp4");
+
+Font font = new FontCollection()
+                .Add("SpaceGrotesk.ttf") // Add font file SpaceGrotesk.ttf- does not require the font to be installed
+                .CreateFont(30F); // Make its size 30 pixels
+
+var options = new TextComputationOptions(
+    "Hello, World!",
+    new Rgba32(0xFF, 0x00, 0x00) /* red RGB*/,
+    new Point(128, 36),
+    font);
+
+var timestamp = new StartEndTimestamp(
+    new TimeSpan(0, 0, 0, 1, 500),
+    new TimeSpan(0, 0, 0, 3)); // the text will appear at 00:00:01.500 and will vanish at 00:00:03.000
+
+bool leaveGeneratedFile = true; // set this to true if you don't want the original video to be overwrtiten.
+
+IUtility util = new AddText(options, timestamp, leaveGeneratedFile);
+
+var collection = new ObservableCollection<float>();
+collection.CollectionChanged += (s, e) =>
+{
+    int lastObj = (int)collection.LastOrDefault();
+    lastObj = lastObj > 100 ? 100 : lastObj;
+
+    string contents = new string('|', lastObj).PadRight(100, ' ');
+    Console.WriteLine($"[{contents}]");
+};
+util.Run(video, ref collection);
+```
