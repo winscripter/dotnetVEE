@@ -1,6 +1,12 @@
 # dotnetVEE
 Modern &amp; Powerful Cross-Platform Managed Video Editing library for .NET that operates on FFmpeg/FFprobe; stands for .NET Video Editing Engine.
 
+# Available on NuGet!
+It is called `Winscripter.VideoEditingTools.dotnetVEE`. Yes, a bit of a detailed name, but I made it because I felt like it:
+- it was developed by me
+- it is a video editing tool
+- it is called `dotnetVEE`.
+
 # Compatibility
 dotnetVEE runs on .NET 6 and .NET 8 *only*.
 
