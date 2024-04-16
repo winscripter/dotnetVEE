@@ -1,12 +1,3 @@
----
-name: Bug report
-about: Create a report to help us improve
-title: Bug Report
-labels: bug
-assignees: ''
-
----
-
 ## Bug Description
 <!--
 Describe the problem with `dotnetVEE`
