@@ -37,8 +37,6 @@ namespace dotnetVEE.Computation.Utils
         /// <inheritdoc />
         public void Run(Video vid, ref ObservableCollection<float> progress)
         {
-            // TODO: Make TextAppearanceAnimationMode do something.
-
             progress.Add(0.0F);
 
             int animationStartDuration = (int)(animationOptions.StartDuration.TotalSeconds * vid.FPS);
