@@ -4,6 +4,34 @@
         <name>dotnetVEE</name>
     </assembly>
     <members>
+        <member name="T:dotnetVEE.Abstractions.Exceptions.UnsupportedVideoFormatException">
+            <summary>
+            An error, representing an unsupported video format.
+            </summary>
+        </member>
+        <member name="P:dotnetVEE.Abstractions.Exceptions.UnsupportedVideoFormatException.FormatName">
+            <summary>
+            Name of the unsupported video format.
+            </summary>
+        </member>
+        <member name="M:dotnetVEE.Abstractions.Exceptions.UnsupportedVideoFormatException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotnetVEE.Abstractions.Exceptions.UnsupportedVideoFormatException" /> class.
+            </summary>
+        </member>
+        <member name="M:dotnetVEE.Abstractions.Exceptions.UnsupportedVideoFormatException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotnetVEE.Abstractions.Exceptions.UnsupportedVideoFormatException" /> class.
+            </summary>
+            <param name="message">Exception message.</param>
+        </member>
+        <member name="M:dotnetVEE.Abstractions.Exceptions.UnsupportedVideoFormatException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotnetVEE.Abstractions.Exceptions.UnsupportedVideoFormatException" /> class.
+            </summary>
+            <param name="message">Exception message.</param>
+            <param name="formatName">Format name.</param>
+        </member>
         <member name="T:dotnetVEE.Abstractions.FileGeneration.DeleteGeneratedFiles">
             <summary>
             An enum consisting of options when it comes to deleting generated
@@ -545,6 +573,252 @@
             </summary>
             <param name="scheme">Scheme to stringify.</param>
             <returns>A string representation of a given chroma subsampling scheme.</returns>
+        </member>
+        <member name="T:dotnetVEE.Computation.Converters.GifConverter">
+            <summary>
+            Converts video files to GIF image format.
+            </summary>
+        </member>
+        <member name="M:dotnetVEE.Computation.Converters.GifConverter.FromVideo(System.String)">
+            <summary>
+            Converts a video file to a GIF image format.
+            </summary>
+            <param name="videoPath">Path to the video file.</param>
+            <returns>Path to the output GIF image file.</returns>
+            <remarks>
+                <b>Warning</b>: Be aware of performance and the size of the GIF
+                                file. Larger videos can result in astonishingly
+                                large GIF image files. The quality of the output
+                                image may not be the best.<br />
+            </remarks>
+        </member>
+        <member name="M:dotnetVEE.Computation.Converters.GifConverter.FromVideo(dotnetVEE.Video)">
+            <summary>
+            Converts a video file to a GIF image format.
+            </summary>
+            <param name="video">Path &amp; information to/of the video file.</param>
+            <returns>Path to the output GIF image file.</returns>
+            <remarks>
+                <b>Warning</b>: Be aware of performance and the size of the GIF
+                                file. Larger videos can result in astonishingly
+                                large GIF image files. The quality of the output
+                                image may not be the best.<br />
+            </remarks>
+        </member>
+        <member name="T:dotnetVEE.Computation.Converters.ImageConverter">
+            <summary>
+            Converts image formats with the help of <see cref="N:SixLabors.ImageSharp" />.
+            </summary>
+        </member>
+        <member name="M:dotnetVEE.Computation.Converters.ImageConverter.ToBmp(SixLabors.ImageSharp.Image,System.String)">
+            <summary>
+            Uses <see cref="N:SixLabors.ImageSharp" /> to convert an image format
+            to another. Supported image formats are the ones supported by
+            <c>ImageSharp</c>, which at the time this was written, were:
+            <list type="bullet">
+                <item>BMP</item>
+                <item>GIF</item>
+                <item>JPEG</item>
+                <item>PBM</item>
+                <item>PNG</item>
+                <item>QOI</item>
+                <item>TGA</item>
+                <item>TIFF</item>
+                <item>WEBP</item>
+            </list>
+            </summary>
+            <param name="image">Input image format.</param>
+            <param name="output">Output image file.</param>
+            <returns>An <see cref="T:SixLabors.ImageSharp.Image" /> instance pointing to the converted image file.</returns>
+        </member>
+        <member name="M:dotnetVEE.Computation.Converters.ImageConverter.ToGif(SixLabors.ImageSharp.Image,System.String)">
+            <summary>
+            Uses <see cref="N:SixLabors.ImageSharp" /> to convert an image format
+            to another. Supported image formats are the ones supported by
+            <c>ImageSharp</c>, which at the time this was written, were:
+            <list type="bullet">
+                <item>BMP</item>
+                <item>GIF</item>
+                <item>JPEG</item>
+                <item>PBM</item>
+                <item>PNG</item>
+                <item>QOI</item>
+                <item>TGA</item>
+                <item>TIFF</item>
+                <item>WEBP</item>
+            </list>
+            </summary>
+            <param name="image">Input image format.</param>
+            <param name="output">Output image file.</param>
+            <returns>An <see cref="T:SixLabors.ImageSharp.Image" /> instance pointing to the converted image file.</returns>
+        </member>
+        <member name="M:dotnetVEE.Computation.Converters.ImageConverter.ToJpeg(SixLabors.ImageSharp.Image,System.String)">
+            <summary>
+            Uses <see cref="N:SixLabors.ImageSharp" /> to convert an image format
+            to another. Supported image formats are the ones supported by
+            <c>ImageSharp</c>, which at the time this was written, were:
+            <list type="bullet">
+                <item>BMP</item>
+                <item>GIF</item>
+                <item>JPEG</item>
+                <item>PBM</item>
+                <item>PNG</item>
+                <item>QOI</item>
+                <item>TGA</item>
+                <item>TIFF</item>
+                <item>WEBP</item>
+            </list>
+            </summary>
+            <param name="image">Input image format.</param>
+            <param name="output">Output image file.</param>
+            <returns>An <see cref="T:SixLabors.ImageSharp.Image" /> instance pointing to the converted image file.</returns>
+        </member>
+        <member name="M:dotnetVEE.Computation.Converters.ImageConverter.ToJpg(SixLabors.ImageSharp.Image,System.String)">
+            <summary>
+            Uses <see cref="N:SixLabors.ImageSharp" /> to convert an image format
+            to another. Supported image formats are the ones supported by
+            <c>ImageSharp</c>, which at the time this was written, were:
+            <list type="bullet">
+                <item>BMP</item>
+                <item>GIF</item>
+                <item>JPEG</item>
+                <item>PBM</item>
+                <item>PNG</item>
+                <item>QOI</item>
+                <item>TGA</item>
+                <item>TIFF</item>
+                <item>WEBP</item>
+            </list>
+            </summary>
+            <param name="image">Input image format.</param>
+            <param name="output">Output image file.</param>
+            <returns>An <see cref="T:SixLabors.ImageSharp.Image" /> instance pointing to the converted image file.</returns>
+        </member>
+        <member name="M:dotnetVEE.Computation.Converters.ImageConverter.ToPbm(SixLabors.ImageSharp.Image,System.String)">
+            <summary>
+            Uses <see cref="N:SixLabors.ImageSharp" /> to convert an image format
+            to another. Supported image formats are the ones supported by
+            <c>ImageSharp</c>, which at the time this was written, were:
+            <list type="bullet">
+                <item>BMP</item>
+                <item>GIF</item>
+                <item>JPEG</item>
+                <item>PBM</item>
+                <item>PNG</item>
+                <item>QOI</item>
+                <item>TGA</item>
+                <item>TIFF</item>
+                <item>WEBP</item>
+            </list>
+            </summary>
+            <param name="image">Input image format.</param>
+            <param name="output">Output image file.</param>
+            <returns>An <see cref="T:SixLabors.ImageSharp.Image" /> instance pointing to the converted image file.</returns>
+        </member>
+        <member name="M:dotnetVEE.Computation.Converters.ImageConverter.ToPng(SixLabors.ImageSharp.Image,System.String)">
+            <summary>
+            Uses <see cref="N:SixLabors.ImageSharp" /> to convert an image format
+            to another. Supported image formats are the ones supported by
+            <c>ImageSharp</c>, which at the time this was written, were:
+            <list type="bullet">
+                <item>BMP</item>
+                <item>GIF</item>
+                <item>JPEG</item>
+                <item>PBM</item>
+                <item>PNG</item>
+                <item>QOI</item>
+                <item>TGA</item>
+                <item>TIFF</item>
+                <item>WEBP</item>
+            </list>
+            </summary>
+            <param name="image">Input image format.</param>
+            <param name="output">Output image file.</param>
+            <returns>An <see cref="T:SixLabors.ImageSharp.Image" /> instance pointing to the converted image file.</returns>
+        </member>
+        <member name="M:dotnetVEE.Computation.Converters.ImageConverter.ToQoi(SixLabors.ImageSharp.Image,System.String)">
+            <summary>
+            Uses <see cref="N:SixLabors.ImageSharp" /> to convert an image format
+            to another. Supported image formats are the ones supported by
+            <c>ImageSharp</c>, which at the time this was written, were:
+            <list type="bullet">
+                <item>BMP</item>
+                <item>GIF</item>
+                <item>JPEG</item>
+                <item>PBM</item>
+                <item>PNG</item>
+                <item>QOI</item>
+                <item>TGA</item>
+                <item>TIFF</item>
+                <item>WEBP</item>
+            </list>
+            </summary>
+            <param name="image">Input image format.</param>
+            <param name="output">Output image file.</param>
+            <returns>An <see cref="T:SixLabors.ImageSharp.Image" /> instance pointing to the converted image file.</returns>
+        </member>
+        <member name="M:dotnetVEE.Computation.Converters.ImageConverter.ToTga(SixLabors.ImageSharp.Image,System.String)">
+            <summary>
+            Uses <see cref="N:SixLabors.ImageSharp" /> to convert an image format
+            to another. Supported image formats are the ones supported by
+            <c>ImageSharp</c>, which at the time this was written, were:
+            <list type="bullet">
+                <item>BMP</item>
+                <item>GIF</item>
+                <item>JPEG</item>
+                <item>PBM</item>
+                <item>PNG</item>
+                <item>QOI</item>
+                <item>TGA</item>
+                <item>TIFF</item>
+                <item>WEBP</item>
+            </list>
+            </summary>
+            <param name="image">Input image format.</param>
+            <param name="output">Output image file.</param>
+            <returns>An <see cref="T:SixLabors.ImageSharp.Image" /> instance pointing to the converted image file.</returns>
+        </member>
+        <member name="M:dotnetVEE.Computation.Converters.ImageConverter.ToTiff(SixLabors.ImageSharp.Image,System.String)">
+            <summary>
+            Uses <see cref="N:SixLabors.ImageSharp" /> to convert an image format
+            to another. Supported image formats are the ones supported by
+            <c>ImageSharp</c>, which at the time this was written, were:
+            <list type="bullet">
+                <item>BMP</item>
+                <item>GIF</item>
+                <item>JPEG</item>
+                <item>PBM</item>
+                <item>PNG</item>
+                <item>QOI</item>
+                <item>TGA</item>
+                <item>TIFF</item>
+                <item>WEBP</item>
+            </list>
+            </summary>
+            <param name="image">Input image format.</param>
+            <param name="output">Output image file.</param>
+            <returns>An <see cref="T:SixLabors.ImageSharp.Image" /> instance pointing to the converted image file.</returns>
+        </member>
+        <member name="M:dotnetVEE.Computation.Converters.ImageConverter.ToWebp(SixLabors.ImageSharp.Image,System.String)">
+            <summary>
+            Uses <see cref="N:SixLabors.ImageSharp" /> to convert an image format
+            to another. Supported image formats are the ones supported by
+            <c>ImageSharp</c>, which at the time this was written, were:
+            <list type="bullet">
+                <item>BMP</item>
+                <item>GIF</item>
+                <item>JPEG</item>
+                <item>PBM</item>
+                <item>PNG</item>
+                <item>QOI</item>
+                <item>TGA</item>
+                <item>TIFF</item>
+                <item>WEBP</item>
+            </list>
+            </summary>
+            <param name="image">Input image format.</param>
+            <param name="output">Output image file.</param>
+            <returns>An <see cref="T:SixLabors.ImageSharp.Image" /> instance pointing to the converted image file.</returns>
         </member>
         <member name="T:dotnetVEE.Computation.FileNamingPrefix">
             <summary>
@@ -2284,6 +2558,111 @@
             <param name="cleanupMode">Settings for the cleanup task.</param>
             <returns>File names for generated files.</returns>
         </member>
+        <member name="T:dotnetVEE.Computation.Utils.Effects.Extended.ScaleOptions">
+            <summary>
+            Options for scaling into the image.
+            </summary>
+            <param name="X">X Scaling (Width)</param>
+            <param name="Y">Y Scaling (Width)</param>
+        </member>
+        <member name="M:dotnetVEE.Computation.Utils.Effects.Extended.ScaleOptions.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Options for scaling into the image.
+            </summary>
+            <param name="X">X Scaling (Width)</param>
+            <param name="Y">Y Scaling (Width)</param>
+        </member>
+        <member name="P:dotnetVEE.Computation.Utils.Effects.Extended.ScaleOptions.X">
+            <summary>X Scaling (Width)</summary>
+        </member>
+        <member name="P:dotnetVEE.Computation.Utils.Effects.Extended.ScaleOptions.Y">
+            <summary>Y Scaling (Width)</summary>
+        </member>
+        <member name="T:dotnetVEE.Computation.Utils.Effects.Extended.Scale">
+            <summary>
+            An effect to scale into the image.
+            </summary>
+        </member>
+        <member name="M:dotnetVEE.Computation.Utils.Effects.Extended.Scale.Zoom(dotnetVEE.Video,dotnetVEE.Abstractions.StartEndTimestamp,dotnetVEE.Computation.Utils.Effects.Extended.ScaleOptions)">
+            <summary>
+            Zooms in/out to the part of the image.
+            </summary>
+            <param name="vid">Video to apply scaling.</param>
+            <param name="timestamp">Start &amp; End timestamps for the effect.</param>
+            <param name="options">Options for zooming in/out.</param>
+            <returns>File names for generated files.</returns>
+        </member>
+        <member name="M:dotnetVEE.Computation.Utils.Effects.Extended.Scale.Zoom(dotnetVEE.Video,dotnetVEE.Abstractions.StartEndTimestamp,dotnetVEE.Computation.Utils.Effects.Extended.ScaleOptions,dotnetVEE.Abstractions.FileGeneration.DeleteGeneratedFiles)">
+            <summary>
+            Zooms in/out to the part of the image.
+            </summary>
+            <param name="vid">Video to apply scaling.</param>
+            <param name="timestamp">Start &amp; End timestamps for the effect.</param>
+            <param name="options">Options for zooming in/out.</param>
+            <param name="cleanupMode">Settings for the cleaning task.</param>
+            <returns>File names for generated files.</returns>
+        </member>
+        <member name="M:dotnetVEE.Computation.Utils.Effects.Extended.Scale.Zoom(dotnetVEE.Video,dotnetVEE.Abstractions.StartEndTimestamp,SixLabors.ImageSharp.Color,dotnetVEE.Computation.Utils.Effects.Extended.ScaleOptions)">
+            <summary>
+            Zooms in/out to the part of the image.
+            </summary>
+            <param name="vid">Video to apply scaling.</param>
+            <param name="timestamp">Start &amp; End timestamps for the effect.</param>
+            <param name="padColor">Background color that will be used when the frame is out of bounds.</param>
+            <param name="options">Options for zooming in/out.</param>
+            <returns>File names for generated files.</returns>
+        </member>
+        <member name="M:dotnetVEE.Computation.Utils.Effects.Extended.Scale.Zoom(dotnetVEE.Video,dotnetVEE.Abstractions.StartEndTimestamp,System.Int32)">
+            <summary>
+            Zooms in/out to the part of the image.
+            </summary>
+            <param name="vid">Video to apply scaling.</param>
+            <param name="timestamp">Start &amp; End timestamps for the effect.</param>
+            <param name="scalePx">Pixels to zoom in/out (applies both to X and Y).</param>
+            <returns>File names for generated files.</returns>
+        </member>
+        <member name="M:dotnetVEE.Computation.Utils.Effects.Extended.Scale.Zoom(dotnetVEE.Video,dotnetVEE.Abstractions.StartEndTimestamp,dotnetVEE.Computation.Utils.Effects.Extended.ScaleOptions,System.Collections.ObjectModel.ObservableCollection{System.Single}@)">
+            <summary>
+            Zooms in/out to the part of the image.
+            </summary>
+            <param name="vid">Video to apply scaling.</param>
+            <param name="timestamp">Start &amp; End timestamps for the effect.</param>
+            <param name="options">Options for zooming in/out.</param>
+            <param name="progress">Part of Progressive Notification.</param>
+            <returns>File names for generated files.</returns>
+        </member>
+        <member name="M:dotnetVEE.Computation.Utils.Effects.Extended.Scale.Zoom(dotnetVEE.Video,dotnetVEE.Abstractions.StartEndTimestamp,dotnetVEE.Computation.Utils.Effects.Extended.ScaleOptions,SixLabors.ImageSharp.Color,System.Collections.ObjectModel.ObservableCollection{System.Single}@)">
+            <summary>
+            Zooms in/out to the part of the image.
+            </summary>
+            <param name="vid">Video to apply scaling.</param>
+            <param name="timestamp">Start &amp; End timestamps for the effect.</param>
+            <param name="options">Options for zooming in/out.</param>
+            <param name="padColor">Background color that will be used when the frame is out of bounds.</param>
+            <param name="progress">Part of Progressive Notification.</param>
+            <returns>File names for generated files.</returns>
+        </member>
+        <member name="M:dotnetVEE.Computation.Utils.Effects.Extended.Scale.Zoom(dotnetVEE.Video,dotnetVEE.Abstractions.StartEndTimestamp,System.Int32,SixLabors.ImageSharp.Color,System.Collections.ObjectModel.ObservableCollection{System.Single}@)">
+            <summary>
+            Zooms in/out to the part of the image.
+            </summary>
+            <param name="vid">Video to apply scaling.</param>
+            <param name="timestamp">Start &amp; End timestamps for the effect.</param>
+            <param name="scalePx">Pixels to zoom in/out (applies both to X and Y).</param>
+            <param name="padColor">Background color that will be used when the frame is out of bounds.</param>
+            <param name="progress">Part of Progressive Notification.</param>
+            <returns>File names for generated files.</returns>
+        </member>
+        <member name="M:dotnetVEE.Computation.Utils.Effects.Extended.Scale.Zoom(dotnetVEE.Video,dotnetVEE.Abstractions.StartEndTimestamp,System.Int32,System.Collections.ObjectModel.ObservableCollection{System.Single}@)">
+            <summary>
+            Zooms in/out to the part of the image.
+            </summary>
+            <param name="vid">Video to apply scaling.</param>
+            <param name="timestamp">Start &amp; End timestamps for the effect.</param>
+            <param name="scalePx">Pixels to zoom in/out (applies both to X and Y).</param>
+            <param name="progress">Part of Progressive Notification.</param>
+            <returns>File names for generated files.</returns>
+        </member>
         <member name="T:dotnetVEE.Computation.Utils.Effects.GaussianBlurApplyPartAlias">
             <summary>
             Alias to method <see cref="M:dotnetVEE.Computation.Utils.Effects.GaussianBlur.ApplyPart(dotnetVEE.Video,System.Single,dotnetVEE.Abstractions.StartEndTimestamp,dotnetVEE.Abstractions.FileGeneration.DeleteGeneratedFiles)" />.
@@ -3117,6 +3496,28 @@
                              except the temporary audio file is also deleted. This makes the
                              <see cref="P:dotnetVEE.Computation.Audio.AudioInfo.Path" /> property pointless in most cases,
                              as it points to a file that no longer exists.
+            </remarks>
+        </member>
+        <member name="M:dotnetVEE.Video.ConcatenateWith(dotnetVEE.Video,System.String)">
+            <summary>
+            Concatenates this video with another one and saves it as <paramref name="outputVideoFile" />.
+            </summary>
+            <param name="video">Path to the video file that will be concatenated with this one.</param>
+            <param name="outputVideoFile">Output video file name.</param>
+            <remarks>
+                1. If the output video file exists, it will be overwritten.<br />
+                2. As tested, this method is <b>very</b> fast and uses little to no memory.
+            </remarks>
+        </member>
+        <member name="M:dotnetVEE.Video.ConcatenateWith(System.String,System.String)">
+            <summary>
+            Concatenates this video with another one and saves it as <paramref name="outputVideoFile" />.
+            </summary>
+            <param name="videoPath">Path to the video file that will be concatenated with this one.</param>
+            <param name="outputVideoFile">Output video file name.</param>
+            <remarks>
+                1. If the output video file exists, it will be overwritten.<br />
+                2. As tested, this method is <b>very</b> fast and uses little to no memory.
             </remarks>
         </member>
         <member name="T:dotnetVEE.Wrapper.FFmpegPath">
