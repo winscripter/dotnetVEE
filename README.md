@@ -7,6 +7,18 @@ It is called `Winscripter.VideoEditingTools.dotnetVEE`. Yes, a bit of a detailed
 - it is a video editing tool
 - it is called `dotnetVEE`.
 
+# What can it do?
+More than what I am going to describe!
+- A wide variety of effects, *including* Glitch effect
+- A way to create a custom effect or utility
+- A way to manage a part of the video between two timestamps: start &amp; end
+- Audio management
+- Video/Audio information query
+- Video to GIF conversion
+- Extracting audio and frames from a video
+- Direct processing on video metadata
+- Easy to use FFmpeg/FFprobe invocation, async invocation, and output capture
+
 # Compatibility
 dotnetVEE runs on .NET 6 and .NET 8 *only*.
 
