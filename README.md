@@ -18,6 +18,8 @@ More than what I am going to describe!
 - Extracting audio and frames from a video
 - Direct processing on video metadata
 - Easy to use FFmpeg/FFprobe invocation, async invocation, and output capture
+- Zooming in/out of a video; adding text; adding moving text; adding rectangle; adding moving rectangle
+- Progressive Notification to keep track of the effect/utility/task progress
 
 # Compatibility
 dotnetVEE runs on .NET 6 and .NET 8 *only*.
