@@ -1,4 +1,5 @@
-﻿using dotnetVEE.Abstractions;
+using dotnetVEE.Abstractions;
+using dotnetVEE.Abstractions.Exceptions;
 using dotnetVEE.Abstractions.FileGeneration;
 using dotnetVEE.Computation;
 using dotnetVEE.Computation.Audio;
@@ -323,6 +324,41 @@ namespace dotnetVEE
             File.Delete($"{fileName}.{ak.ToString().ToLower()}");
 
             return info;
+        }
+
+        /// <summary>
+        /// Concatenates this video with another one and saves it as <paramref name="outputVideoFile" />.
+        /// </summary>
+        /// <param name="video">Path to the video file that will be concatenated with this one.</param>
+        /// <param name="outputVideoFile">Output video file name.</param>
+        /// <remarks>
+        ///     1. If the output video file exists, it will be overwritten.<br />
+        ///     2. As tested, this method is <b>very</b> fast and uses little to no memory.
+        /// </remarks>
+        public void ConcatenateWith(Video video, string outputVideoFile) => ConcatenateWith(video.Path, outputVideoFile);
+
+        /// <summary>
+        /// Concatenates this video with another one and saves it as <paramref name="outputVideoFile" />.
+        /// </summary>
+        /// <param name="videoPath">Path to the video file that will be concatenated with this one.</param>
+        /// <param name="outputVideoFile">Output video file name.</param>
+        /// <remarks>
+        ///     1. If the output video file exists, it will be overwritten.<br />
+        ///     2. As tested, this method is <b>very</b> fast and uses little to no memory.
+        /// </remarks>
+        public void ConcatenateWith(string videoPath, string outputVideoFile)
+        {
+            string fileName = RandomPathGenerator.GenerateRandomFileWithExtensionV1("txt");
+
+            while (File.Exists(fileName))
+            {
+                fileName = RandomPathGenerator.GenerateRandomFileWithExtensionV1("txt");
+            }
+
+            File.AppendAllText(fileName, $"file '{this.Path}'{Environment.NewLine}");
+            File.AppendAllText(fileName, $"file '{videoPath}'{Environment.NewLine}");
+
+            InvokeHelper.LaunchAndWaitForFFmpeg($"-y -f concat -safe 0 -i \"{fileName}\" -c copy \"{outputVideoFile}\"");
         }
     }
 }
