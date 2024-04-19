@@ -230,6 +230,229 @@
             </summary>
             <param name="message">Exception message.</param>
         </member>
+        <member name="T:dotnetVEE.Computation.Audio.AudioFx">
+            <summary>
+            Provides methods to manipulate audio files directly.
+            </summary>
+            <remarks>
+            <see cref="T:dotnetVEE.Computation.Audio.AudioFx" /> only applies to audio files, like MP3, WAV, OGG, etc.
+            To modify audio playing inside a video, you need to:<br />
+            <list type="bullet">
+                <item>1. Extract audio</item>
+                <item>2. Mute that part</item>
+                <item>3. Manipulate the extracted audio file with this class</item>
+                <item>4. Add it back</item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:dotnetVEE.Computation.Audio.AudioFx.GetAudioExtension(System.String)">
+            <summary>
+            Gets the file extension of the audio file.
+            </summary>
+            <param name="audioFile">Input audio file.</param>
+            <returns>The extension of the audio file represented as a string.</returns>
+            <exception cref="T:dotnetVEE.Computation.Audio.InvalidAudioFileException">Thrown when the file doesn't seem to have an extension.</exception>
+        </member>
+        <member name="M:dotnetVEE.Computation.Audio.AudioFx.ConvertExtensionToKind(System.String)">
+            <summary>
+            Converts the file extension of the video to an <see cref="T:dotnetVEE.Computation.Audio.AudioKind" /> enum.
+            </summary>
+            <param name="extension">File extension of the audio. Period characters will be automatically deleted.</param>
+            <returns>File extension represented in <see cref="T:dotnetVEE.Computation.Audio.AudioKind" />, or <see langword="NULL" /> if it's unsupported.</returns>
+            <exception cref="T:System.ArgumentException">Thrown when the extension contains different characters than [A-Z 0-9].</exception>
+        </member>
+        <member name="M:dotnetVEE.Computation.Audio.AudioFx.Concatenate(System.String,System.String,System.String)">
+            <summary>
+            Concatenates the first audio file, <paramref name="destination" />,
+            with <paramref name="source" /> and saves it as <paramref name="output" />.
+            </summary>
+            <param name="destination">Destination audio file: where source will be concatenated.</param>
+            <param name="source">Source audio file: audio file to concatenate to destination.</param>
+            <param name="output">Output audio file name.</param>
+            <remarks>
+                If the output file name exists, it will be overwritten.
+            </remarks>
+        </member>
+        <member name="M:dotnetVEE.Computation.Audio.AudioFx.Concatenate(dotnetVEE.Computation.Audio.AudioInfo,System.String,System.String)">
+            <summary>
+            Concatenates the first audio file, <paramref name="destination" />,
+            with <paramref name="source" /> and saves it as <paramref name="output" />.
+            </summary>
+            <param name="destination">Destination audio file: where source will be concatenated.</param>
+            <param name="source">Source audio file: audio file to concatenate to destination.</param>
+            <param name="output">Output audio file name.</param>
+            <remarks>
+                If the output file name exists, it will be overwritten.
+            </remarks>
+        </member>
+        <member name="M:dotnetVEE.Computation.Audio.AudioFx.Concatenate(System.String,dotnetVEE.Computation.Audio.AudioInfo,System.String)">
+            <summary>
+            Concatenates the first audio file, <paramref name="destination" />,
+            with <paramref name="source" /> and saves it as <paramref name="output" />.
+            </summary>
+            <param name="destination">Destination audio file: where source will be concatenated.</param>
+            <param name="source">Source audio file: audio file to concatenate to destination.</param>
+            <param name="output">Output audio file name.</param>
+            <remarks>
+                If the output file name exists, it will be overwritten.
+            </remarks>
+        </member>
+        <member name="M:dotnetVEE.Computation.Audio.AudioFx.Concatenate(dotnetVEE.Computation.Audio.AudioInfo,dotnetVEE.Computation.Audio.AudioInfo,System.String)">
+            <summary>
+            Concatenates the first audio file, <paramref name="destination" />,
+            with <paramref name="source" /> and saves it as <paramref name="output" />.
+            </summary>
+            <param name="destination">Destination audio file: where source will be concatenated.</param>
+            <param name="source">Source audio file: audio file to concatenate to destination.</param>
+            <param name="output">Output audio file name.</param>
+            <remarks>
+                If the output file name exists, it will be overwritten.
+            </remarks>
+        </member>
+        <member name="M:dotnetVEE.Computation.Audio.AudioFx.Tempo(System.String,System.Single,System.String)">
+            <summary>
+            Alters the tempo of an audio. That is, speeding up the
+            audio without affecting the pitch.
+            </summary>
+            <param name="source">The source audio file.</param>
+            <param name="by">Percentage of the tempo effect. Default is 100%. For instance, to speed up the audio by 1.5x, use the value 150.0.</param>
+            <param name="output">The output audio file.</param>
+            <remarks>
+                The output audio file will be overwritten if it exists.
+            </remarks>
+        </member>
+        <member name="M:dotnetVEE.Computation.Audio.AudioFx.Tempo(dotnetVEE.Computation.Audio.AudioInfo,System.Single,System.String)">
+            <summary>
+            Alters the tempo of an audio. That is, speeding up the
+            audio without affecting the pitch.
+            </summary>
+            <param name="source">The source audio file.</param>
+            <param name="by">Percentage of the tempo effect. Default is 100%. For instance, to speed up the audio by 1.5x, use the value 150.0.</param>
+            <param name="output">The output audio file.</param>
+            <remarks>
+                The output audio file will be overwritten if it exists.
+            </remarks>
+        </member>
+        <member name="M:dotnetVEE.Computation.Audio.AudioFx.Tempo(System.String,System.Single,dotnetVEE.Computation.Audio.AudioInfo)">
+            <summary>
+            Alters the tempo of an audio. That is, speeding up the
+            audio without affecting the pitch.
+            </summary>
+            <param name="source">The source audio file.</param>
+            <param name="by">Percentage of the tempo effect. Default is 100%. For instance, to speed up the audio by 1.5x, use the value 150.0.</param>
+            <param name="output">The output audio file.</param>
+            <remarks>
+                The output audio file will be overwritten if it exists.
+            </remarks>
+        </member>
+        <member name="M:dotnetVEE.Computation.Audio.AudioFx.Tempo(dotnetVEE.Computation.Audio.AudioInfo,System.Single,dotnetVEE.Computation.Audio.AudioInfo)">
+            <summary>
+            Alters the tempo of an audio. That is, speeding up the
+            audio without affecting the pitch.
+            </summary>
+            <param name="source">The source audio file.</param>
+            <param name="by">Percentage of the tempo effect. Default is 100%. For instance, to speed up the audio by 1.5x, use the value 150.0.</param>
+            <param name="output">The output audio file.</param>
+            <remarks>
+                The output audio file will be overwritten if it exists.
+            </remarks>
+        </member>
+        <member name="M:dotnetVEE.Computation.Audio.AudioFx.Pitch(System.String,System.Single,System.String)">
+            <summary>
+            Adds a pitch effect to an audio file.
+            </summary>
+            <param name="source">Input audio file.</param>
+            <param name="pitch">Pitch value. Default is 1.0. Lesser values will result in a darker sound.</param>
+            <param name="output">Output audio file. This will be overwritten if it exists.</param>
+            <remarks>
+                This alters the pitch value <i>by a multiplicative value</i>. For instance, passing
+                <c>3.0</c> as a pitch value could result in a very severe pitch effect, to the point
+                where it's hard to hear the audio properly. To apply the pitch effect by semitones,
+                please use the <see cref="M:dotnetVEE.Computation.Audio.AudioFx.PitchBySemitones(System.String,System.Int32,System.String)" /> method instead.
+            </remarks>
+        </member>
+        <member name="M:dotnetVEE.Computation.Audio.AudioFx.Pitch(dotnetVEE.Computation.Audio.AudioInfo,System.Single,System.String)">
+            <summary>
+            Adds a pitch effect to an audio file.
+            </summary>
+            <param name="source">Input audio file.</param>
+            <param name="pitch">Pitch value. Default is 1.0. Lesser values will result in a darker sound.</param>
+            <param name="output">Output audio file. This will be overwritten if it exists.</param>
+            <remarks>
+                This alters the pitch value <i>by a multiplicative value</i>. For instance, passing
+                <c>3.0</c> as a pitch value could result in a very severe pitch effect, to the point
+                where it's hard to hear the audio properly. To apply the pitch effect by semitones,
+                please use the <see cref="M:dotnetVEE.Computation.Audio.AudioFx.PitchBySemitones(System.String,System.Int32,System.String)" /> method instead.
+            </remarks>
+        </member>
+        <member name="M:dotnetVEE.Computation.Audio.AudioFx.Pitch(System.String,System.Single,dotnetVEE.Computation.Audio.AudioInfo)">
+            <summary>
+            Adds a pitch effect to an audio file.
+            </summary>
+            <param name="source">Input audio file.</param>
+            <param name="pitch">Pitch value. Default is 1.0. Lesser values will result in a darker sound.</param>
+            <param name="output">Output audio file. This will be overwritten if it exists.</param>
+            <remarks>
+                This alters the pitch value <i>by a multiplicative value</i>. For instance, passing
+                <c>3.0</c> as a pitch value could result in a very severe pitch effect, to the point
+                where it's hard to hear the audio properly. To apply the pitch effect by semitones,
+                please use the <see cref="M:dotnetVEE.Computation.Audio.AudioFx.PitchBySemitones(System.String,System.Int32,System.String)" /> method instead.
+            </remarks>
+        </member>
+        <member name="M:dotnetVEE.Computation.Audio.AudioFx.Pitch(dotnetVEE.Computation.Audio.AudioInfo,System.Single,dotnetVEE.Computation.Audio.AudioInfo)">
+            <summary>
+            Adds a pitch effect to an audio file.
+            </summary>
+            <param name="source">Input audio file.</param>
+            <param name="pitch">Pitch value. Default is 1.0. Lesser values will result in a darker sound.</param>
+            <param name="output">Output audio file. This will be overwritten if it exists.</param>
+            <remarks>
+                This alters the pitch value <i>by a multiplicative value</i>. For instance, passing
+                <c>3.0</c> as a pitch value could result in a very severe pitch effect, to the point
+                where it's hard to hear the audio properly. To apply the pitch effect by semitones,
+                please use the <see cref="M:dotnetVEE.Computation.Audio.AudioFx.PitchBySemitones(System.String,System.Int32,System.String)" /> method instead.
+            </remarks>
+        </member>
+        <member name="M:dotnetVEE.Computation.Audio.AudioFx.PitchBySemitones(System.String,System.Int32,System.String)">
+            <summary>
+            Adds a pitch effect to an audio file with semitones, as opposed to
+            the <see cref="M:dotnetVEE.Computation.Audio.AudioFx.Pitch(System.String,System.Single,System.String)" /> method that uses a
+            multiplicative value instead of additive.
+            </summary>
+            <param name="source">Input audio file.</param>
+            <param name="semitones">Pitch value. Default is 0. Negative values will result in a darker sound.</param>
+            <param name="output">Output audio file. This will be overwritten if it exists.</param>
+        </member>
+        <member name="M:dotnetVEE.Computation.Audio.AudioFx.PitchBySemitones(dotnetVEE.Computation.Audio.AudioInfo,System.Int32,System.String)">
+            <summary>
+            Adds a pitch effect to an audio file with semitones, as opposed to
+            the <see cref="M:dotnetVEE.Computation.Audio.AudioFx.Pitch(System.String,System.Single,System.String)" /> method that uses a
+            multiplicative value instead of additive.
+            </summary>
+            <param name="source">Input audio file.</param>
+            <param name="semitones">Pitch value. Default is 0. Negative values will result in a darker sound.</param>
+            <param name="output">Output audio file. This will be overwritten if it exists.</param>
+        </member>
+        <member name="M:dotnetVEE.Computation.Audio.AudioFx.PitchBySemitones(System.String,System.Int32,dotnetVEE.Computation.Audio.AudioInfo)">
+            <summary>
+            Adds a pitch effect to an audio file with semitones, as opposed to
+            the <see cref="M:dotnetVEE.Computation.Audio.AudioFx.Pitch(System.String,System.Single,System.String)" /> method that uses a
+            multiplicative value instead of additive.
+            </summary>
+            <param name="source">Input audio file.</param>
+            <param name="semitones">Pitch value. Default is 0. Negative values will result in a darker sound.</param>
+            <param name="output">Output audio file. This will be overwritten if it exists.</param>
+        </member>
+        <member name="M:dotnetVEE.Computation.Audio.AudioFx.PitchBySemitones(dotnetVEE.Computation.Audio.AudioInfo,System.Int32,dotnetVEE.Computation.Audio.AudioInfo)">
+            <summary>
+            Adds a pitch effect to an audio file with semitones, as opposed to
+            the <see cref="M:dotnetVEE.Computation.Audio.AudioFx.Pitch(System.String,System.Single,System.String)" /> method that uses a
+            multiplicative value instead of additive.
+            </summary>
+            <param name="source">Input audio file.</param>
+            <param name="semitones">Pitch value. Default is 0. Negative values will result in a darker sound.</param>
+            <param name="output">Output audio file. This will be overwritten if it exists.</param>
+        </member>
         <member name="T:dotnetVEE.Computation.Audio.AudioInfo">
             <summary>
             Represents information about an audio.
@@ -258,6 +481,16 @@
         <member name="P:dotnetVEE.Computation.Audio.AudioInfo.Volume">
             <summary>
             Gets the volume of an audio. The default value is 100%.
+            </summary>
+        </member>
+        <member name="P:dotnetVEE.Computation.Audio.AudioInfo.Semitones">
+            <summary>
+            Gets or sets the Semitones for this audio (pitch effect.)
+            </summary>
+        </member>
+        <member name="P:dotnetVEE.Computation.Audio.AudioInfo.Tempo">
+            <summary>
+            Gets or sets the Tempo for this audio (speed without affecting pitch.)
             </summary>
         </member>
         <member name="M:dotnetVEE.Computation.Audio.AudioInfo.#ctor(System.String)">
@@ -390,6 +623,132 @@
                                 <code>var kind = AudioManager.AutomatedExtractAudio(vid, output);
             Console.WriteLine(output + kind?.ToString()); // audio.aac</code>
             </remarks>
+        </member>
+        <member name="T:dotnetVEE.Computation.Audio.ChromaticScale">
+            <summary>
+            Provides Chromatic Scale values and their corresponding
+            semitones in the octave 0. For instance, <see cref="F:dotnetVEE.Computation.Audio.ChromaticScale.C" />
+            corresponds to 0 semitones, <see cref="F:dotnetVEE.Computation.Audio.ChromaticScale.CSharpDFlat" />
+            to 1 semitone, and so on.<br /><br />
+            
+            See <see href="https://en.wikipedia.org/wiki/Chromatic_scale" />.
+            </summary>
+        </member>
+        <member name="F:dotnetVEE.Computation.Audio.ChromaticScale.C">
+            <summary>
+            C Chromatic Scale.
+            </summary>
+        </member>
+        <member name="F:dotnetVEE.Computation.Audio.ChromaticScale.CSharpDFlat">
+            <summary>
+            C♯/D♭ Chromatic Scale.
+            </summary>
+            <remarks>
+            Not to be confused with the C# programming language.
+            </remarks>
+        </member>
+        <member name="F:dotnetVEE.Computation.Audio.ChromaticScale.D">
+            <summary>
+            D Chromatic Scale.
+            </summary>
+        </member>
+        <member name="F:dotnetVEE.Computation.Audio.ChromaticScale.DSharpEFlat">
+            <summary>
+            D♯/E♭ Chromatic Scale.
+            </summary>
+        </member>
+        <member name="F:dotnetVEE.Computation.Audio.ChromaticScale.E">
+            <summary>
+            E Chromatic Scale.
+            </summary>
+        </member>
+        <member name="F:dotnetVEE.Computation.Audio.ChromaticScale.F">
+            <summary>
+            F Chromatic Scale.
+            </summary>
+        </member>
+        <member name="F:dotnetVEE.Computation.Audio.ChromaticScale.FSharpGFlat">
+            <summary>
+            F♯/G♭ Chromatic Scale.
+            </summary>
+            <remarks>
+            Not to be confused with the F# programming language.
+            </remarks>
+        </member>
+        <member name="F:dotnetVEE.Computation.Audio.ChromaticScale.G">
+            <summary>
+            G Chromatic Scale.
+            </summary>
+        </member>
+        <member name="F:dotnetVEE.Computation.Audio.ChromaticScale.GSharpAFlat">
+            <summary>
+            G♯/A♭ Chromatic Scale.
+            </summary>
+        </member>
+        <member name="F:dotnetVEE.Computation.Audio.ChromaticScale.A">
+            <summary>
+            A Chromatic Scale.
+            </summary>
+        </member>
+        <member name="F:dotnetVEE.Computation.Audio.ChromaticScale.ASharpBFlat">
+            <summary>
+            A♯/B♭ Chromatic Scale.
+            </summary>
+        </member>
+        <member name="F:dotnetVEE.Computation.Audio.ChromaticScale.B">
+            <summary>
+            B Chromatic Scale.
+            </summary>
+        </member>
+        <member name="T:dotnetVEE.Computation.Audio.ChromaticScaleConverter">
+            <summary>
+            Provides various methods to convert data related to chromatic scale.
+            </summary>
+        </member>
+        <member name="M:dotnetVEE.Computation.Audio.ChromaticScaleConverter.ToSemitones(dotnetVEE.Computation.Audio.ChromaticScale,System.Int32)">
+            <summary>
+            Converts Chromatic Scale and Octave value to semitones. To do
+            the opposite, use the <see cref="M:dotnetVEE.Computation.Audio.ChromaticScaleConverter.FromSemitones(System.Int32)" /> method.
+            </summary>
+            <param name="scale">The Chromatic Scale value.</param>
+            <param name="octave">The Octave value.</param>
+            <returns>Number of Semitones.</returns>
+        </member>
+        <member name="M:dotnetVEE.Computation.Audio.ChromaticScaleConverter.ToSemitones(dotnetVEE.Computation.Audio.ChromaticScaleOctaveGroup)">
+            <summary>
+            Converts Chromatic Scale and Octave value to semitones. To do
+            the opposite, use the <see cref="M:dotnetVEE.Computation.Audio.ChromaticScaleConverter.FromSemitones(System.Int32)" /> method.
+            </summary>
+            <param name="group">The input Chromatic Scale and Octave value.</param>
+            <returns>Number of Semitones.</returns>
+        </member>
+        <member name="M:dotnetVEE.Computation.Audio.ChromaticScaleConverter.FromSemitones(System.Int32)">
+            <summary>
+            Converts semitones into Chromatic Scale and Octave. To do the opposite,
+            use the <see cref="M:dotnetVEE.Computation.Audio.ChromaticScaleConverter.ToSemitones(dotnetVEE.Computation.Audio.ChromaticScale,System.Int32)" /> method.
+            </summary>
+            <param name="semitone">Amount of semitones to convert.</param>
+            <returns>An instance of <see cref="T:dotnetVEE.Computation.Audio.ChromaticScaleOctaveGroup" />, holding chromatic scale and octave.</returns>
+        </member>
+        <member name="T:dotnetVEE.Computation.Audio.ChromaticScaleOctaveGroup">
+            <summary>
+            Groups <see cref="T:dotnetVEE.Computation.Audio.ChromaticScale" /> and octave value.
+            </summary>
+            <param name="ChromaticScale">The Chromatic Scale.</param>
+            <param name="Octave">The Octave value.</param>
+        </member>
+        <member name="M:dotnetVEE.Computation.Audio.ChromaticScaleOctaveGroup.#ctor(dotnetVEE.Computation.Audio.ChromaticScale,System.Int32)">
+            <summary>
+            Groups <see cref="T:dotnetVEE.Computation.Audio.ChromaticScale" /> and octave value.
+            </summary>
+            <param name="ChromaticScale">The Chromatic Scale.</param>
+            <param name="Octave">The Octave value.</param>
+        </member>
+        <member name="P:dotnetVEE.Computation.Audio.ChromaticScaleOctaveGroup.ChromaticScale">
+            <summary>The Chromatic Scale.</summary>
+        </member>
+        <member name="P:dotnetVEE.Computation.Audio.ChromaticScaleOctaveGroup.Octave">
+            <summary>The Octave value.</summary>
         </member>
         <member name="T:dotnetVEE.Computation.Audio.InvalidAudioFileException">
             <summary>
@@ -3313,6 +3672,14 @@
             <typeparam name="T">Type of the struct.</typeparam>
             <param name="value">Struct to copy.</param>
             <returns>A copied memory-safe clone of the given struct.</returns>
+        </member>
+        <member name="M:dotnetVEE.Private.Extensions.StringExtensions.Capitalize(System.String)">
+            <summary>
+            Makes the first character in the string uppercase.
+            </summary>
+            <param name="input">Input string.</param>
+            <returns>A new string with the first letter being uppercase.</returns>
+            <exception cref="T:System.ArgumentException">Thrown when the string is empty.</exception>
         </member>
         <member name="T:dotnetVEE.Private.Utils.Cleaner">
             <summary>
