@@ -33,6 +33,16 @@ namespace dotnetVEE.Computation.Audio
         public Volume Volume { get; internal set; }
 
         /// <summary>
+        /// Gets or sets the Semitones for this audio (pitch effect.)
+        /// </summary>
+        public float Semitones { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Tempo for this audio (speed without affecting pitch.)
+        /// </summary>
+        public float Tempo { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="AudioInfo" /> struct.
         /// </summary>
         /// <param name="fileName">Name of an audio file to process.</param>
@@ -49,6 +59,9 @@ namespace dotnetVEE.Computation.Audio
             Path = fileName;
 
             Volume = new Volume();
+
+            Semitones = 0F;
+            Tempo = 0F;
         }
 
         /// <summary>

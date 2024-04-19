@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <AssemblyTitle>Video Editing Engine for .NET Apps</AssemblyTitle>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <Company>winscripter</Company>
     <Copyright>Copyright (c) winscripter, 2024</Copyright>
   </PropertyGroup>

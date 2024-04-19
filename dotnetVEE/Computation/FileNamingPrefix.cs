@@ -23,6 +23,7 @@
         /// </summary>
         /// <param name="prefix">The instance of <see cref="FileNamingPrefix" /> to convert to a string.</param>
         /// <returns>String representation of the given <see cref="FileNamingPrefix" /> that can be read by FFmpeg.</returns>
-        public static string Stringify(this FileNamingPrefix prefix) => $"{prefix.Prefix}{new string('0', prefix.DigitCount)}";
+        public static string Stringify(this FileNamingPrefix prefix)
+            => $"{prefix.Prefix}{new string('0', prefix.DigitCount)}";
     }
 }

@@ -1,4 +1,4 @@
-using dotnetVEE.Abstractions;
+﻿using dotnetVEE.Abstractions;
 using dotnetVEE.Abstractions.FileGeneration;
 using dotnetVEE.Computation.ImageUtils;
 using SixLabors.ImageSharp;
