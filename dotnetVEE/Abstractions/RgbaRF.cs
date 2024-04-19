@@ -26,7 +26,6 @@ namespace dotnetVEE.Abstractions
         /// </summary>
         /// <param name="rf">The instance of <see cref="RgbaRF" /> to convert.</param>
         /// <returns>An instance of the <see cref="Rgba32" /> struct from SixLabors.ImageSharp, converted from <see cref="RgbaRF" />.</returns>
-        public static Rgba32 ToSixLaborsRgba32(this RgbaRF rf)
-            => new Rgba32(rf.R, rf.G, rf.B, rf.A);
+        public static Rgba32 ToSixLaborsRgba32(this RgbaRF rf) => new Rgba32(rf.R, rf.G, rf.B, rf.A);
     }
 }
