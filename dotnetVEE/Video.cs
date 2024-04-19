@@ -128,8 +128,7 @@ namespace dotnetVEE
         /// </remarks>
         /// <param name="timestamp">The timestamp where the frame index should be returned.</param>
         /// <returns>Frame index of this video based on the timestamp.</returns>
-        public double GetFrameIndexAtTimestamp(TimeSpan timestamp)
-            => timestamp.TotalSeconds * FPS;
+        public double GetFrameIndexAtTimestamp(TimeSpan timestamp) => timestamp.TotalSeconds * FPS;
 
         /// <summary>
         /// Loops through all frames within the given timestamps,
