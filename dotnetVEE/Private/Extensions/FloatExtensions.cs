@@ -2,7 +2,6 @@
 {
     internal static class FloatExtensions
     {
-        public static string SafeStringify(this float value)
-            => value.ToString().Replace(",", ".");
+        public static string SafeStringify(this float value) => value.ToString().Replace(",", ".");
     }
 }
