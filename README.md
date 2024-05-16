@@ -24,6 +24,12 @@ More than what I am going to describe!
 # Compatibility
 dotnetVEE runs on .NET 6 and .NET 8 *only*.
 
+However, dotnetVEE automatically looks for *ffmpeg.exe* and *ffprobe.exe* on Windows, and *ffmpeg* and *ffprobe* on anything
+except Windows. This ensures compatibility. If you're releasing an application that uses dotnetVEE but is compatible with
+multiple operating systems, it's important to include ffmpeg.exe/ffprobe.exe for a Windows release and ffmpeg/ffprobe for
+macOS or Linux release, and especially the version of ffmpeg for these systems. File naming plays an important role at locating
+ffmpeg/ffprobe.
+
 # Documentation
 Documentation can be found in the `doc` folder in the root of the GitHub repository.
 
