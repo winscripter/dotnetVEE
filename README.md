@@ -30,6 +30,10 @@ multiple operating systems, it's important to include ffmpeg.exe/ffprobe.exe for
 macOS or Linux release, and especially the version of ffmpeg for these systems. File naming plays an important role at locating
 ffmpeg/ffprobe.
 
+If you're releasing a Class Library that uses dotnetVEE, like a wrapper or extension, then including ffmpeg/ffprobe is
+*optional*. Well, including all of them for Windows, macOS, and Linux will probably yield the size of around 500MB, which
+is quite a lot.
+
 # Documentation
 Documentation can be found in the `doc` folder in the root of the GitHub repository.
 
