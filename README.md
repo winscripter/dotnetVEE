@@ -22,7 +22,7 @@ More than what I am going to describe!
 - Progressive Notification to keep track of the effect/utility/task progress
 
 # Compatibility
-dotnetVEE runs on .NET 6 and .NET 8 *only*.
+dotnetVEE runs on .NET 6 and later runtimes.
 
 However, dotnetVEE automatically looks for *ffmpeg.exe* and *ffprobe.exe* on Windows, and *ffmpeg* and *ffprobe* on anything
 except Windows. This ensures compatibility. If you're releasing an application that uses dotnetVEE but is compatible with
